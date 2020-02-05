@@ -1,0 +1,8 @@
+# ant_hash.each{|key,value|self.send(("#{key}="), value)}
+       
+       
+        # @name= ant_hash[:name]
+        # @description = ant_hash[:description]
+        # @size = ant_hash[:size]
+        # @diet = ant_hash[:diet]
+        # @habitat = ant_hash[:habitat]
