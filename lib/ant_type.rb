@@ -1,6 +1,6 @@
 
 class Ants::AntType
-      extend Ants::Scraper
+      
     attr_accessor :name, :description, :size, :diet, :habitat
 
     @@all = []
@@ -14,17 +14,21 @@ class Ants::AntType
         @size = ant_hash[:size]
         @diet = ant_hash[:diet]
         @habitat = ant_hash[:habitat]
-        self << @@all
+        @@all << self
         
     end 
 
     def self.create_from_hash(ant_array)
-       ant_array= Ants::Scraper.ant_hash
         ant_array.each do |a_hash|
             self.new(a_hash)
-            binding.pry
+            
+            # binding.pry
         end
     end 
+    
+    def self.all
+        @@all
+    end
 
     
 
