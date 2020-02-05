@@ -1,0 +1,4 @@
+class Ants::AntType
+
+
+end 
