@@ -6,7 +6,7 @@ class Ants::Scraper
         url = "https://pestworldforkids.org/pest-guide/ants"
         unparsed_page = HTTParty.get(url)
         parsed_page = Nokogiri::HTML(unparsed_page)
-        ant_group =[]
+        ant_hash =[]
         ant_info = parsed_page.css("div.content-block.orange-border")
         ant_info.map do |ant_data|
             ant = {
@@ -16,10 +16,10 @@ class Ants::Scraper
                 diet: ant_data.css("div.pest-details")[0].text.strip,
                 habitat: ant_data.css("div.pest-details p")[1].text.strip
             }
-            ant_group << ant 
+            ant_hash << ant 
             
         end
-        ant_group
+        ant_hash
         # binding.pry
     end    
     

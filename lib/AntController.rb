@@ -5,9 +5,12 @@ class Ants::AntController
           
     # end
 
-    def run 
-        puts "Welcome, please select an ant" 
-        # Ants::Scraper.scraper
+    def run
+        Ants::AntType.create_from_hash(ant_hash)
+        # puts "Welcome, please select an ant" 
+        
+        # binding.pry
     end 
+
     
 end 
