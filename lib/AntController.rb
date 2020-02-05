@@ -7,7 +7,7 @@ class Ants::AntController
 
     def run 
         puts "Welcome, please select an ant" 
-        Ants::Scraper.scraper
+        # Ants::Scraper.scraper
     end 
     
 end 

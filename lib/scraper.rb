@@ -20,7 +20,7 @@ class Ants::Scraper
             
         end
         ant_group
-        binding.pry
+        # binding.pry
     end    
     
 end 
