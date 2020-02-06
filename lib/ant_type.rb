@@ -11,11 +11,29 @@ class Ants::AntType
         @size = ant_array[:size]
         @diet = ant_array[:diet]
         @habitat = ant_array[:habitat]
-        # ant_hash.each do|key, value|
-        #     self.send("#{key}=", value) 
         @@all << self
-         binding.pry
-        # end
+        #  binding.pry
+    end 
+
+    def name
+        @name 
+    end 
+
+    def description
+        @description
+    end
+
+    def size
+        @size
+    end 
+
+    def diet 
+        @diet
+    end 
+
+    def habitat 
+        @habitat 
+        binding.pry
     end 
 
     def self.create_from_hash(ant_array)
@@ -27,7 +45,5 @@ class Ants::AntType
     def self.all
         @@all
     end
-
-    
 
 end 

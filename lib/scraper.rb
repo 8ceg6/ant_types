@@ -17,9 +17,9 @@ class Ants::Scraper
                 :diet => ant_data.css("div.pest-details")[0].text.split(' ')[1..-1].join(' '),
                 :habitat => ant_data.css("div.pest-details p")[1].text.strip}
                 # ant = {:name =>name, :description => description, :size => size,
-                #         :diet => diet, :habitat => habitat}
+                        # :diet => diet, :habitat => habitat}
                 ants << ant 
-            #  binding.pry
+            #   binding.pry
                 end
                 ants
     
