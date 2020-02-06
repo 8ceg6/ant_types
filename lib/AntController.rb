@@ -15,7 +15,7 @@ class Ants::AntController
         # ant_array.each do |a_h|
         # a_h = Ants::AntType.create_from_hash(ant_array)
         # end 
-         binding.pry
+        #  binding.pry
     end 
     def intro        
         puts "please select an ant to learn more."

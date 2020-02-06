@@ -14,7 +14,7 @@ class Ants::AntType
         # ant_hash.each do|key, value|
         #     self.send("#{key}=", value) 
         @@all << self
-        #  binding.pry
+         binding.pry
         # end
     end 
 
