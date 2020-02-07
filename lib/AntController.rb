@@ -5,13 +5,14 @@ class Ants::AntController
         self.new_ant
         self.list_ants
         self.selection
-        self.ant_description
+        self.details_list
+        # self.ant_details(ant_choice)
         #  binding.pry
     end 
     def intro        
         puts "Please select a number to learn more."
         selection = list_ants
-        puts #{"selection"}
+        
     end 
     
     def new_ant
@@ -28,19 +29,35 @@ class Ants::AntController
             end
         # binding.pry
     end
-    
-    def selection
-        ant_choice = gets.strip
+
+    def details_list
+        @list = Ants::AntType.all.select {|a,b|}
+        @list.each.with_index(1) do |a,i|
+        puts "#{i}. #{a.diet}"
+        end
     end 
     
-    def ant_description
-            details = Ants::AntType.all do |a,b|
-            details.each{|d|d.description}
-            binding.pry
-            # puts "#{a.description}"
-            
-        end
+    def selection
+        ant_choice = gets.strip.to_i
+        ant_details(ant_choice)
+    end 
+    
+    def ant_details(ant_choice)
+         details = @ant_list[ant_choice -1]
+         puts "Select more details for #{details.name}"
+         self.details_list  
+         binding.pry 
+    end  
+       
+    
+    # details = Ants::AntType.all 
+            # details.each do |k,v|
+            # end
+            #     details.each do |k,v|
+            #     puts "#{k.description} #{k.size}" 
+            # end 
         
-    end   
+        
+      
     
 end 
