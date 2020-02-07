@@ -4,7 +4,7 @@ class Ants::AntController
         # self.intro
         self.new_ant
         self.list_ants
-        self.selection
+        self.ant_selection
         self.details_list
         # self.ant_details(ant_choice)
         #  binding.pry
@@ -22,41 +22,39 @@ class Ants::AntController
     end 
     
     def list_ants
-        puts "please select an ant to learn more."
-        @ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
-        @ant_list.each.with_index(1) do |a,i|
+            puts "please select an ant to learn more."
+            @ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
+            @ant_list.each.with_index(1) do |a,i|
             puts "#{i}. #{a.name}"
             end
         # binding.pry
     end
 
-    def details_list
-        @list = Ants::AntType.all.select {|a,b|}
-        @list.each.with_index(1) do |a,i|
-        puts "#{i}. #{a.diet}"
-        end
+    # def details_list
+    #         # binding.pry
+    #     @list = Ants::AntType.all.select {|a,b|}
+    #         @list.each.with_index(1) do |a,i|
+    #         puts "#{i}. #{a.diet}"
+            
+    #     end
+    # end 
+    
+    def ant_selection
+            ant_choice = gets.strip.to_i
+            choice =self.ant_details(ant_choice)
+            choice
     end 
     
-    def selection
-        ant_choice = gets.strip.to_i
-        ant_details(ant_choice)
-    end 
-    
-    def ant_details(ant_choice)
-         details = @ant_list[ant_choice -1]
-         puts "Select more details for #{details.name}"
-         self.details_list  
-         binding.pry 
+    def  ant_details(ant_choice)
+            details = @ant_list[ant_choice -1]
+            puts "Selected details for #{details.name}"
+            # Ants::AntType.all.select{|d|d.name == d}
+            # puts "#{details}...."
+          binding.pry 
     end  
        
     
-    # details = Ants::AntType.all 
-            # details.each do |k,v|
-            # end
-            #     details.each do |k,v|
-            #     puts "#{k.description} #{k.size}" 
-            # end 
-        
+    
         
       
     
