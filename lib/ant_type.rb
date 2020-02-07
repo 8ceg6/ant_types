@@ -6,17 +6,13 @@ class Ants::AntType
     @@all = []
 
     def initialize(ant_hash)
-        # binding.pry
         @name = ant_hash[:name]
         @description = ant_hash[:description]
         @size = ant_hash[:size]
         @diet = ant_hash[:diet]
         @habitat = ant_hash[:habitat]
         @@all << self
-        # binding.pry
     end 
-
-    
 
     def self.create_from_hash(ant_array)
         ant_array.each do |a_hash|
@@ -24,13 +20,7 @@ class Ants::AntType
         end
     end 
 
-    def self.find_by(input)
-        @@all.detect {|n|n.name == input}
-        binding.pry
-    end 
-    
     def self.all
         @@all
     end
-
 end 
