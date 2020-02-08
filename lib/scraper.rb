@@ -5,8 +5,11 @@ class Ants::Scraper
     def self.scraper
         url = "https://pestworldforkids.org/pest-guide/ants"
         unparsed_page = HTTParty.get(url)
-        parsed_page = Nokogiri::HTML(unparsed_page)
-
+        parsed_page = Nokogiri::HTML(unparsed_page.body)
+        # binding.pry5
+        
+        
+        
         ant_info = parsed_page.css("div.content-block.orange-border")
         ants = [] 
         ant_info.collect do |ant_data|
@@ -20,5 +23,6 @@ class Ants::Scraper
                 end
                 ants
     end    
+
     
 end 
