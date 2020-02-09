@@ -10,7 +10,7 @@ class Ants::AntController
     end 
     def intro        
         puts ""
-        puts "SELECT AN ANT BY NUMBER TO LEARN MORE."
+        puts "SELECT AN ANT BY NUMBER TO LEARN MORE.".colorize(:yellow)
         puts ""
         # selection = list_ants
         
@@ -22,7 +22,6 @@ class Ants::AntController
     end 
     
     def list_ants
-            # puts "SELECT AN ANT BY NUMBER TO LEARN MORE."
             ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
             ant_list.each.with_index(1) do |a,i|
             puts "#{i}. #{a.name}"
@@ -42,10 +41,10 @@ class Ants::AntController
 
     def invalid 
             puts ""
-            puts "ERROR SELECT AGAIN"
+            puts "!!!ERROR SELECT AGAIN!!!".colorize(:red)
             puts ""
-            puts "1. Ant List"
-            puts "2. To Exit"
+            puts "1. Ant List".colorize(:green)
+            puts "2. To Exit".colorize(:green)
             puts ""
         selection = gets.strip.to_i
         self.next_action(selection)
@@ -53,8 +52,13 @@ class Ants::AntController
     
     def ant_selection
             ant_choice = gets.strip.to_i
-            ant_details(ant_choice)
-            
+            # ant_details(ant_choice)
+            if ant_choice > 5.to_i || ""
+                invalid 
+            else
+                
+            binding.pry
+            end
     end 
     
     def  ant_details(ant_choice)
@@ -62,21 +66,21 @@ class Ants::AntController
              details = Ants::AntType.all[ant_choice -1]
              
              puts ""
-             puts "DETAILS FOR #{details.name.upcase}"
+             puts "DETAILS FOR #{details.name.upcase}".colorize(:yellow)
              puts "" 
-             puts "DESCRIPTION- #{details.description}"
+             puts "DESCRIPTION- ".colorize(:yellow) + " #{details.description}"
              puts ""
-             puts "HABITAT- #{details.habitat}"
+             puts "HABITAT- ".colorize(:yellow) + " #{details.habitat}"
              puts ""
-             puts "DIET- #{details.diet}"
+             puts "DIET- ".colorize(:yellow) + " #{details.diet}"
              puts ""
-             puts "SIZE- #{details.size}"
+             puts "SIZE- ".colorize(:yellow) + " #{details.size}"
              puts ""
              
              puts "PRESS NUMBER FOR NEXT ACTION"
              puts ""
-             puts "1. Ant List"
-             puts "2. To Exit"
+             puts "1. Ant List".colorize(:green)
+             puts "2. To Exit".colorize(:green)
              puts ""
              selection = gets.strip.to_i
              self.next_action(selection)

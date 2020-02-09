@@ -5,7 +5,8 @@ require 'nokogiri'
 require_relative './ant_type'
 require_relative './scraper'
 require_relative './AntController'
-
+require 'colorize'
+require 'colorized_string'
 module Ants
   class Error < StandardError; end
   # Your code goes here...
