@@ -1,15 +1,17 @@
 class Ants::AntController
         
     def run
-        # intro
+        intro
         new_ant
         list_ants
         ant_selection
         # ant_details(ant_choice)
-        # next_action
+        next_action
     end 
     def intro        
+        puts ""
         puts "SELECT AN ANT BY NUMBER TO LEARN MORE."
+        puts ""
         # selection = list_ants
         
     end 
@@ -27,15 +29,28 @@ class Ants::AntController
             end
     end
 
-    # def next_action(selection)
-    #     if selection == 1 
-    #         self.list_ants
-    #         self.ant_selection
-    #     else 
-    #         exit    
-    #     end
+    def next_action(selection)
+        if selection == 1 
+            self.list_ants
+            self.ant_selection
+        elsif selection == 2
+            exit   
+        else 
+            self.invalid 
+        end
+    end
 
-    # end
+    def invalid 
+            puts ""
+            puts "ERROR SELECT AGAIN"
+            puts ""
+            puts "1. Ant List"
+            puts "2. To Exit"
+            puts ""
+        selection = gets.strip.to_i
+        self.next_action(selection)
+    end
+    
     def ant_selection
             ant_choice = gets.strip.to_i
             ant_details(ant_choice)
@@ -44,7 +59,7 @@ class Ants::AntController
     
     def  ant_details(ant_choice)
             
-             details = list_ants[ant_choice -1]
+             details = Ants::AntType.all[ant_choice -1]
              
              puts ""
              puts "DETAILS FOR #{details.name.upcase}"
@@ -63,8 +78,7 @@ class Ants::AntController
              puts "1. Ant List"
              puts "2. To Exit"
              puts ""
-            #  selection = gets.strip.to_i
-            #  self.next_action(selection)
-         
+             selection = gets.strip.to_i
+             self.next_action(selection)
     end  
 end 
