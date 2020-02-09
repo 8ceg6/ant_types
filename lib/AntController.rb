@@ -1,19 +1,17 @@
 class Ants::AntController
-        
+       
+    
     def run
         intro
         new_ant
         list_ants
         ant_selection
-        # ant_details(ant_choice)
         next_action
     end 
     def intro        
         puts ""
         puts "SELECT AN ANT BY NUMBER TO LEARN MORE.".colorize(:yellow)
         puts ""
-        # selection = list_ants
-        
     end 
     
     def new_ant
@@ -22,48 +20,49 @@ class Ants::AntController
     end 
     
     def list_ants
-            ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
-            ant_list.each.with_index(1) do |a,i|
-            puts "#{i}. #{a.name}"
+        ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
+        ant_list.each.with_index(1) do |a,i|
+        puts "#{i}. #{a.name}"
             end
     end
 
     def next_action(selection)
         if selection == 1 
-            self.list_ants
-            self.ant_selection
+         self.list_ants
+         self.ant_selection
         elsif selection == 2
             exit   
         else 
-            self.invalid 
+         self.invalid 
         end
     end
 
     def invalid 
-            puts ""
-            puts "!!!ERROR SELECT AGAIN!!!".colorize(:red)
-            puts ""
-            puts "1. Ant List".colorize(:green)
-            puts "2. To Exit".colorize(:green)
-            puts ""
+        puts ""
+        puts "!!!ERROR SELECT AGAIN!!!".colorize(:red)
+        puts ""
+        puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
+        puts ""
+        puts "1. Ant List".colorize(:green)
+        puts "2. To Exit".colorize(:green)
+        puts ""
         selection = gets.strip.to_i
         self.next_action(selection)
     end
     
     def ant_selection
-            ant_choice = gets.strip.to_i
-            # ant_details(ant_choice)
-            if ant_choice > 5.to_i || ""
-                invalid 
-            else
-                
-            binding.pry
-            end
+        ant_choice = gets.strip.to_i
+            
+        if ant_choice >= 1.to_i &&  ant_choice <6.to_i
+           ant_details(ant_choice) 
+            
+        else ant_choice < 1.to_i
+             invalid   
+        end
     end 
     
-    def  ant_details(ant_choice)
-            
-             details = Ants::AntType.all[ant_choice -1]
+    def ant_details(ant_choice)
+        details = Ants::AntType.all[ant_choice -1]
              
              puts ""
              puts "DETAILS FOR #{details.name.upcase}".colorize(:yellow)
@@ -77,7 +76,7 @@ class Ants::AntController
              puts "SIZE- ".colorize(:yellow) + " #{details.size}"
              puts ""
              
-             puts "PRESS NUMBER FOR NEXT ACTION"
+             puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
              puts ""
              puts "1. Ant List".colorize(:green)
              puts "2. To Exit".colorize(:green)
