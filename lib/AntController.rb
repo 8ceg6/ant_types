@@ -2,6 +2,7 @@ class Ants::AntController
        
     
     def run
+        
         intro
         new_ant
         list_ants
@@ -15,14 +16,26 @@ class Ants::AntController
     end 
     
     def new_ant
-        ant_array = Ants::Scraper.scraper
+        ant_array = Ants::Scraper.ant_scraper
         Ants::AntType.create_from_hash(ant_array)
     end 
-    
+
     def list_ants
         ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
         ant_list.each.with_index(1) do |a,i|
         puts "#{i}. #{a.name}"
+            end
+    end
+
+    def new_bee
+        bee_array = Ants::Scraper.bee_scraper
+        Ants::BeeType.create_from_hash(bee_array)
+    end 
+
+    def list_bees
+        bee_list = Ants::BeeType.all.sort{|a,b| a.name <=> b.name}
+        bee_list.each.with_index(1) do |b,i|
+        puts "#{i}. #{b.name}"
             end
     end
 
