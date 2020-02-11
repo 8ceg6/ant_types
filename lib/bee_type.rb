@@ -5,11 +5,11 @@ class Ants::BeeType
    @@all = []
 
    def initialize(bee_hash)
-       @name = ant_hash[:name]
-       @description = ant_hash[:description]
-       @size = ant_hash[:size]
-       @diet = ant_hash[:diet]
-       @habitat = ant_hash[:habitat]
+       @name = bee_hash[:name]
+       @description = bee_hash[:description]
+       @size = bee_hash[:size]
+       @diet = bee_hash[:diet]
+       @habitat = bee_hash[:habitat]
        @@all << self
    end 
 

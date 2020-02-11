@@ -5,45 +5,75 @@ class Ants::AntController
         
         intro
         new_ant
-        list_ants
+        new_bee
+        insect_choice
+        # list_ants
+        # list_bees
         ant_selection
-        next_action
+        bee_selection
+        # next_action
     end 
     def intro        
         puts ""
-        puts "SELECT AN ANT BY NUMBER TO LEARN MORE.".colorize(:yellow)
+        puts "SELECT AN INSECT BY NUMBER TO LEARN MORE.".colorize(:yellow)
         puts ""
-    end 
+        # selection = gets.to_i
+    end
     
     def new_ant
         ant_array = Ants::Scraper.ant_scraper
         Ants::AntType.create_from_hash(ant_array)
     end 
 
-    def list_ants
-        ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
-        ant_list.each.with_index(1) do |a,i|
-        puts "#{i}. #{a.name}"
-            end
-    end
-
     def new_bee
         bee_array = Ants::Scraper.bee_scraper
         Ants::BeeType.create_from_hash(bee_array)
     end 
 
+    def insect_choice
+        puts ""
+        puts "1. Ants"
+        puts "2. Bees"
+        puts "3. Exit"
+        selection = gets.strip.to_i
+        # binding.pry
+        
+        if  selection == 1 
+            self.list_ants
+        elsif selection == 2
+            self.list_bees 
+        elsif selection == 3
+            exit
+        else selection != 1 || 2 || 3
+            invalid 
+        end
+        # binding.pry
+    end 
+   
+    def list_ants
+        puts "SELECT AN ANT BY NUMBER TO LEARN MORE."
+        ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
+        ant_list.each.with_index(1) do |a,i|
+        puts "#{i}. #{a.name}"
+            end
+        self.ant_selection
+    end
+
     def list_bees
+        puts "SELECT A BEE BY NUMBER TO LEARN MORE."
         bee_list = Ants::BeeType.all.sort{|a,b| a.name <=> b.name}
         bee_list.each.with_index(1) do |b,i|
         puts "#{i}. #{b.name}"
-            end
+        end
+         self.bee_selection    
     end
 
     def next_action(selection)
         if selection == 1 
-         self.list_ants
-         self.ant_selection
+            self.list_ants
         elsif selection == 2
+            self.list_bees
+        elsif selection == 3 
             exit   
         else 
          self.invalid 
@@ -56,20 +86,28 @@ class Ants::AntController
         puts ""
         puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
         puts ""
-        puts "1. Ant List".colorize(:green)
+        puts "1. Insect List".colorize(:green)
         puts "2. To Exit".colorize(:green)
         puts ""
         selection = gets.strip.to_i
-        self.next_action(selection)
+        self.insect_choice
     end
     
     def ant_selection
         ant_choice = gets.strip.to_i
             
         if ant_choice >= 1.to_i &&  ant_choice <6.to_i
-           ant_details(ant_choice) 
-            
-        else ant_choice < 1.to_i
+           self.ant_details(ant_choice) 
+        else #ant_choice < 1.to_i
+             invalid   
+        end
+    end 
+
+    def bee_selection
+        bee_choice = gets.strip.to_i
+        if bee_choice >= 1.to_i &&  bee_choice <5.to_i
+           self.bee_details(bee_choice) 
+        else #bee_choice < 1.to_i
              invalid   
         end
     end 
@@ -92,7 +130,33 @@ class Ants::AntController
              puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
              puts ""
              puts "1. Ant List".colorize(:green)
-             puts "2. To Exit".colorize(:green)
+             puts "2. Bee List".colorize(:green)
+             puts "3. To Exit".colorize(:green)
+             puts ""
+             selection = gets.strip.to_i
+             self.next_action(selection)
+    end  
+
+    def bee_details(bee_choice)
+        details = Ants::BeeType.all[bee_choice -1]
+             
+             puts ""
+             puts "DETAILS FOR #{details.name.upcase}".colorize(:yellow)
+             puts "" 
+             puts "DESCRIPTION- ".colorize(:yellow) + " #{details.description}"
+             puts ""
+             puts "HABITAT- ".colorize(:yellow) + " #{details.habitat}"
+             puts ""
+             puts "DIET- ".colorize(:yellow) + " #{details.diet}"
+             puts ""
+             puts "SIZE- ".colorize(:yellow) + " #{details.size}"
+             puts ""
+             
+             puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
+             puts ""
+             puts "1. Ant List".colorize(:green)
+             puts "2. Bee List".colorize(:green)
+             puts "3. To Exit".colorize(:green)
              puts ""
              selection = gets.strip.to_i
              self.next_action(selection)
