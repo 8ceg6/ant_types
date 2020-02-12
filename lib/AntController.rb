@@ -1,20 +1,17 @@
 class Ants::AntController
        
-    
     def run
-        
         intro
         new_ant
         new_bee
         insect_choice
-        # list_ants
-        # list_bees
         ant_selection
         bee_selection
-        # next_action
     end 
+    
     def intro        
         puts ""
+        puts "Welcome to Insect Info CLI".colorize(:yellow)
         puts "SELECT AN INSECT BY NUMBER TO LEARN MORE.".colorize(:yellow)
         puts ""
         # selection = gets.to_i
@@ -31,13 +28,11 @@ class Ants::AntController
     end 
 
     def insect_choice
-        puts ""
         puts "1. Ants"
         puts "2. Bees"
         puts "3. Exit"
         selection = gets.strip.to_i
-        # binding.pry
-        
+
         if  selection == 1 
             self.list_ants
         elsif selection == 2
@@ -47,20 +42,19 @@ class Ants::AntController
         else selection != 1 || 2 || 3
             invalid 
         end
-        # binding.pry
     end 
    
     def list_ants
-        puts "SELECT AN ANT BY NUMBER TO LEARN MORE."
+        puts "SELECT AN ANT BY NUMBER TO LEARN MORE.".colorize(:yellow)
         ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
         ant_list.each.with_index(1) do |a,i|
         puts "#{i}. #{a.name}"
-            end
+        end
         self.ant_selection
     end
 
     def list_bees
-        puts "SELECT A BEE BY NUMBER TO LEARN MORE."
+        puts "SELECT A BEE BY NUMBER TO LEARN MORE.".colorize(:yellow)
         bee_list = Ants::BeeType.all.sort{|a,b| a.name <=> b.name}
         bee_list.each.with_index(1) do |b,i|
         puts "#{i}. #{b.name}"
@@ -98,7 +92,7 @@ class Ants::AntController
             
         if ant_choice >= 1.to_i &&  ant_choice <6.to_i
            self.ant_details(ant_choice) 
-        else #ant_choice < 1.to_i
+        else 
              invalid   
         end
     end 
@@ -107,7 +101,7 @@ class Ants::AntController
         bee_choice = gets.strip.to_i
         if bee_choice >= 1.to_i &&  bee_choice <5.to_i
            self.bee_details(bee_choice) 
-        else #bee_choice < 1.to_i
+        else 
              invalid   
         end
     end 
@@ -126,7 +120,6 @@ class Ants::AntController
              puts ""
              puts "SIZE- ".colorize(:yellow) + " #{details.size}"
              puts ""
-             
              puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
              puts ""
              puts "1. Ant List".colorize(:green)
@@ -151,7 +144,6 @@ class Ants::AntController
              puts ""
              puts "SIZE- ".colorize(:yellow) + " #{details.size}"
              puts ""
-             
              puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
              puts ""
              puts "1. Ant List".colorize(:green)
