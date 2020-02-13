@@ -1,4 +1,4 @@
-class Ants::AntController
+class Insects::AntController
        
     def run
         intro
@@ -18,13 +18,13 @@ class Ants::AntController
     end
     
     def new_ant
-        ant_array = Ants::Scraper.ant_scraper
-        Ants::AntType.create_from_hash(ant_array)
+        ant_array = Insects::Scraper.ant_scraper
+        Insects::AntType.create_from_hash(ant_array)
     end 
 
     def new_bee
-        bee_array = Ants::Scraper.bee_scraper
-        Ants::BeeType.create_from_hash(bee_array)
+        bee_array = Insects::Scraper.bee_scraper
+        Insects::BeeType.create_from_hash(bee_array)
     end 
 
     def insect_choice
@@ -46,7 +46,7 @@ class Ants::AntController
    
     def list_ants
         puts "SELECT AN ANT BY NUMBER TO LEARN MORE.".colorize(:yellow)
-        ant_list = Ants::AntType.all.sort{|a,b| a.name <=> b.name}
+        ant_list = Insects::AntType.all.sort{|a,b| a.name <=> b.name}
         ant_list.each.with_index(1) do |a,i|
         puts "#{i}. #{a.name}"
         end
@@ -55,7 +55,7 @@ class Ants::AntController
 
     def list_bees
         puts "SELECT A BEE BY NUMBER TO LEARN MORE.".colorize(:yellow)
-        bee_list = Ants::BeeType.all.sort{|a,b| a.name <=> b.name}
+        bee_list = Insects::BeeType.all.sort{|a,b| a.name <=> b.name}
         bee_list.each.with_index(1) do |b,i|
         puts "#{i}. #{b.name}"
         end
@@ -99,6 +99,7 @@ class Ants::AntController
 
     def bee_selection
         bee_choice = gets.strip.to_i
+        
         if bee_choice >= 1.to_i &&  bee_choice <5.to_i
            self.bee_details(bee_choice) 
         else 
@@ -107,7 +108,7 @@ class Ants::AntController
     end 
     
     def ant_details(ant_choice)
-        details = Ants::AntType.all[ant_choice -1]
+        details = Insects::AntType.all[ant_choice -1]
              
              puts ""
              puts "DETAILS FOR #{details.name.upcase}".colorize(:yellow)
@@ -131,7 +132,7 @@ class Ants::AntController
     end  
 
     def bee_details(bee_choice)
-        details = Ants::BeeType.all[bee_choice -1]
+        details = Insects::BeeType.all[bee_choice -1]
              
              puts ""
              puts "DETAILS FOR #{details.name.upcase}".colorize(:yellow)

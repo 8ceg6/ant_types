@@ -1,5 +1,5 @@
 
-class Ants::AntType
+class Insects::AntType
       
      attr_accessor :name, :description, :size, :diet, :habitat
 

@@ -8,7 +8,7 @@ require_relative './scraper'
 require_relative './AntController'
 require 'colorize'
 require 'colorized_string'
-module Ants
+module Insects
   class Error < StandardError; end
   # Your code goes here...
 end

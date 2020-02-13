@@ -1,4 +1,4 @@
-class Ants::BeeType
+class Insects::BeeType
       
     attr_accessor :name, :description, :size, :diet, :habitat
 

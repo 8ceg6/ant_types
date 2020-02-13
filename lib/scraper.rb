@@ -1,5 +1,5 @@
 
-class Ants::Scraper
+class Insects::Scraper
 
 
     def self.ant_scraper
