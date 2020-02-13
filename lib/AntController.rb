@@ -76,7 +76,7 @@ class Insects::AntController
 
     def invalid 
         puts ""
-        puts "!!!ERROR SELECT AGAIN!!!".colorize(:red)
+        puts "!!!---ERROR SELECT AGAIN---!!!".colorize(:red)
         puts ""
         puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
         puts ""
@@ -109,49 +109,33 @@ class Insects::AntController
     
     def ant_details(ant_choice)
         details = Insects::AntType.all[ant_choice -1]
-             
-             puts ""
-             puts "DETAILS FOR #{details.name.upcase}".colorize(:yellow)
-             puts "" 
-             puts "DESCRIPTION- ".colorize(:yellow) + " #{details.description}"
-             puts ""
-             puts "HABITAT- ".colorize(:yellow) + " #{details.habitat}"
-             puts ""
-             puts "DIET- ".colorize(:yellow) + " #{details.diet}"
-             puts ""
-             puts "SIZE- ".colorize(:yellow) + " #{details.size}"
-             puts ""
-             puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
-             puts ""
-             puts "1. Ant List".colorize(:green)
-             puts "2. Bee List".colorize(:green)
-             puts "3. To Exit".colorize(:green)
-             puts ""
-             selection = gets.strip.to_i
-             self.next_action(selection)
+         details(details)    
     end  
 
     def bee_details(bee_choice)
         details = Insects::BeeType.all[bee_choice -1]
-             
-             puts ""
-             puts "DETAILS FOR #{details.name.upcase}".colorize(:yellow)
-             puts "" 
-             puts "DESCRIPTION- ".colorize(:yellow) + " #{details.description}"
-             puts ""
-             puts "HABITAT- ".colorize(:yellow) + " #{details.habitat}"
-             puts ""
-             puts "DIET- ".colorize(:yellow) + " #{details.diet}"
-             puts ""
-             puts "SIZE- ".colorize(:yellow) + " #{details.size}"
-             puts ""
-             puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
-             puts ""
-             puts "1. Ant List".colorize(:green)
-             puts "2. Bee List".colorize(:green)
-             puts "3. To Exit".colorize(:green)
-             puts ""
-             selection = gets.strip.to_i
-             self.next_action(selection)
-    end  
+         details(details)    
+    end        
+         
+    def details(details) 
+            puts ""
+            puts "DETAILS FOR #{details.name.upcase}".colorize(:yellow)
+            puts "" 
+            puts "DESCRIPTION- ".colorize(:yellow) + " #{details.description}"
+            puts ""
+            puts "HABITAT- ".colorize(:yellow) + " #{details.habitat}"
+            puts ""
+            puts "DIET- ".colorize(:yellow) + " #{details.diet}"
+            puts ""
+            puts "SIZE- ".colorize(:yellow) + " #{details.size}"
+            puts ""
+            puts "ENTER NUMBER FOR NEXT ACTION".colorize(:yellow)
+            puts ""
+            puts "1. Ant List".colorize(:green)
+            puts "2. Bee List".colorize(:green)
+            puts "3. To Exit".colorize(:green)
+            puts ""
+            selection = gets.strip.to_i
+            self.next_action(selection)
+     end 
 end 

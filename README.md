@@ -6,21 +6,11 @@ this is a small CLI that list a few details and attributes of 2 insects.
 
 Add this line to your application's Gemfile:
 
-```ruby
-gem 'ants'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install ants
+clone repository 
 
 ## Usage
 
-TODO: Write usage instructions here
+
 
 ## Development
 
