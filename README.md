@@ -9,7 +9,7 @@ clone repository
 
 ## Usage
 
-!/ubsr/in/env ruby to run program 
+!/usr/bin/env ruby to run program 
 
 ## Development
 
@@ -24,3 +24,9 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/8ceg6/
 ## Code of Conduct
 
 Everyone interacting in the Ants project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/8ceg6/ants/blob/master/CODE_OF_CONDUCT.md).
+ 
+ ## BLOG LINK 
+    https://8ceg6.github.io/cli_project
+
+ ## VIDEO DESCRIPTION 
+       https://youtu.be/TiUHUkyEXBI
