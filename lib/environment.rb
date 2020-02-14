@@ -10,5 +10,5 @@ require 'colorize'
 require 'colorized_string'
 module Insects
   class Error < StandardError; end
-  # Your code goes here...
+  
 end

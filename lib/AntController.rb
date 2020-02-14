@@ -84,7 +84,13 @@ class Insects::AntController
         puts "2. To Exit".colorize(:green)
         puts ""
         selection = gets.strip.to_i
-        self.insect_choice
+        if selection == 1
+            self.insect_choice
+        elsif selection == 2 
+            exit 
+        else 
+            invalid
+        end
     end
     
     def ant_selection

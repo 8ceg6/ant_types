@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/ubsr/in/env ruby
 require_relative '../lib/environment'
 
 Insects::AntController.new.run
