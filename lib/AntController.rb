@@ -14,7 +14,6 @@ class Insects::AntController
         puts "Welcome to Insect Info CLI".colorize(:yellow)
         puts "SELECT AN INSECT BY NUMBER TO LEARN MORE.".colorize(:yellow)
         puts ""
-        # selection = gets.to_i
     end
     
     def new_ant

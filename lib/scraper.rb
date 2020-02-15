@@ -1,7 +1,6 @@
 
 class Insects::Scraper
 
-
     def self.ant_scraper
         url = "https://pestworldforkids.org/pest-guide/ants"
         unparsed_page = HTTParty.get(url)
