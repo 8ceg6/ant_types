@@ -29,4 +29,6 @@ Everyone interacting in the Ants project's codebases, issue trackers, chat rooms
     https://8ceg6.github.io/cli_project
 
  ## VIDEO DEMO
-    https://drive.google.com/file/d/1rdf5gLnCcCXh2emnN8du7bb2cvaNnKFs/view?usp=sharing
+    OPTION 1  https://drive.google.com/file/d/1rdf5gLnCcCXh2emnN8du7bb2cvaNnKFs/view?usp=sharing
+    OPTION 2  https://youtu.be/q2emhSFCrqI
+
