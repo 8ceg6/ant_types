@@ -14,7 +14,7 @@ class Insects::Scraper
                 :size => ant_data.css("li")[0].text.split(' ')[1..-1].join(' '),
                 :diet => ant_data.css("div.pest-details")[0].text.split(' ')[1..-1].join(' '),
                 :habitat => ant_data.css("div.pest-details p")[1].text.strip}
-                end
+            end
         
     end    
 
@@ -25,13 +25,14 @@ class Insects::Scraper
         
         bee_info = parsed_page.css("div.content-block.orange-border") 
         bee_info.collect do |bee_data|
+            
             bee= {
                 :name => bee_data.css("div h2").text,
                 :description => bee_data.css("div p").text.strip,
-                :size => bee_data.css("li")[0].text.split(' ')[1..-1].join(' '),
+                :size => bee_data.css("li")[0].text.gsub("\"", "").split(' ')[1..-1].join(' '),
                 :diet => bee_data.css("div.pest-details")[0].text.split(' ')[1..-1].join(' '),
                 :habitat => bee_data.css("div.pest-details p")[1].text.strip}
-                end
+            end
             
     end    
 end 

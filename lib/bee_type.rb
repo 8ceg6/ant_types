@@ -19,6 +19,14 @@ class Insects::BeeType
         end
     end 
 
+    def self.one_inch_bees 
+        self.all.select { |bee| bee.size == "1"}
+    end 
+
+    def bees_of_size(size)
+        self.all.select { |bee| bee.size == size}
+    end
+    
     def self.all
         @@all
     end

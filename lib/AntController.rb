@@ -4,6 +4,7 @@ class Insects::AntController
         intro
         new_ant
         new_bee
+         binding.pry
         insect_choice
         ant_selection
         bee_selection
